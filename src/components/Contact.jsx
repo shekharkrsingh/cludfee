@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+// import Seo from './Seo';
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -19,7 +20,7 @@ const Contact = () => {
     e.preventDefault();
     
     try {
-      const response = await fetch("http://localhost:8080/mail", {
+      const response = await fetch("https://cludfee.onrender.com/mail", {
         method: "POST",
         headers: {
           "Content-Type": "application/json"
@@ -52,8 +53,14 @@ const Contact = () => {
   };
 
   return (
-    <section id="contact">
+    <section id="contact" style={{marginTop: '2rem'}}>
       <div className="container">
+        {/* <Seo
+          title="Contact CludFee | Get In Touch Today" 
+          description="Have a project in mind? Contact CludFee for full stack development, AI solutions, and consultation. Let’s build something great together." 
+          canonical="https://cludfee.netlify.app/contact"
+        /> */}
+
         <h2 className="section-title">Get In Touch</h2>
         <div className="contact-container">
           <div className="contact-form">
@@ -108,7 +115,8 @@ const Contact = () => {
                 </div>
                 <div>
                   <h3>Email</h3>
-                  <p>john@example.com</p>
+                  <p>
+                  <a href="mail:cludfee@gmail.com">cludfee@gmail.com</a></p>
                 </div>
               </div>
               <div className="contact-detail">
@@ -117,7 +125,7 @@ const Contact = () => {
                 </div>
                 <div>
                   <h3>Location</h3>
-                  <p>Remote | Based in San Francisco, CA</p>
+                  <p>Remote | Based in Bengaluru, IN</p>
                 </div>
               </div>
               <div className="contact-detail">
@@ -130,7 +138,7 @@ const Contact = () => {
                 </div>
               </div>
             </div>
-            <div className="social-links">
+            {/* <div className="social-links">
               <a href="#" className="social-link">
                 <i className="fab fa-linkedin-in"></i>
               </a>
@@ -143,7 +151,7 @@ const Contact = () => {
               <a href="#" className="social-link">
                 <i className="fab fa-dribbble"></i>
               </a>
-            </div>
+            </div> */}
           </div>
         </div>
       </div>

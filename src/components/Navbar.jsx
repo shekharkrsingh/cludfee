@@ -17,7 +17,7 @@ const Navbar = ({ theme, toggleTheme }) => {
     <nav id="navbar">
       <div className="container nav-container">
         <Link to="/" className="logo" onClick={closeMenu}>
-          John<span>Doe</span>
+          Clud<span>Fee</span>
         </Link>
 
         <ul className={`nav-links ${isMenuOpen ? 'active' : ''}`} id="nav-links">
@@ -34,10 +34,12 @@ const Navbar = ({ theme, toggleTheme }) => {
           )}
 
           {/* Separate Routes (always visible) */}
-         {location.pathname !== '/' && (<><li><Link to="/" onClick={closeMenu}>Home</Link></li>
-          <li><Link to="/pricing" onClick={closeMenu}>Pricing</Link></li>
+         {location.pathname !== '/' && (
+          <><li><Link to="/" onClick={closeMenu}>Home</Link></li>
+          {/* <li><Link to="/pricing" onClick={closeMenu}>Pricing</Link></li> */}
           <li><Link to="/terms" onClick={closeMenu}>Terms</Link></li>
           <li><Link to="/personal-details" onClick={closeMenu}>Personal Details</Link></li>
+          <li><Link to="/privacy-policy" onClick={closeMenu}>Privacy Policy</Link></li>
         </>)}</ul>
 
         <button

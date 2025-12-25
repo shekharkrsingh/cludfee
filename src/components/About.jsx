@@ -6,8 +6,8 @@ const About = () => {
       <div className="container">
         <div className="about-content">
           <div className="about-text">
-            <h2 className="section-title">About Me</h2>
-            <p>Hello! I'm John Doe, a passionate full-stack developer with over 5 years of
+            <h2 className="section-title" style={{textAlign: 'center'}}>About Me</h2>
+            <p>Hello! I'm Shekhar Singh, a passionate full-stack developer with over 2 years of
               experience building web applications for businesses of all sizes.</p>
             <p>I specialize in creating high-performance, responsive one-page applications
               that help businesses achieve their goals. My approach combines technical
@@ -18,15 +18,15 @@ const About = () => {
               tutorials.</p>
             <div className="about-stats">
               <div className="stat">
-                <div className="stat-number">5+</div>
+                <div className="stat-number">2+</div>
                 <div className="stat-text">Years Experience</div>
               </div>
               <div className="stat">
-                <div className="stat-number">120+</div>
+                <div className="stat-number">10+</div>
                 <div className="stat-text">Projects Completed</div>
               </div>
               <div className="stat">
-                <div className="stat-number">40+</div>
+                <div className="stat-number">6+</div>
                 <div className="stat-text">Happy Clients</div>
               </div>
             </div>

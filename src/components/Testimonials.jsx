@@ -3,23 +3,34 @@ import React, { useState, useEffect } from 'react';
 const Testimonials = () => {
   const [currentTestimonial, setCurrentTestimonial] = useState(0);
   
-  const testimonials = [
-    {
-      author: 'Sarah Johnson',
-      role: 'CEO, TechStart Inc.',
-      quote: '"John delivered an exceptional one-page application for our startup. His attention to detail and communication throughout the project were outstanding."'
-    },
-    {
-      author: 'Michael Chen',
-      role: 'Marketing Director, GrowthLab',
-      quote: '"Working with John was a great experience. He transformed our outdated website into a modern, responsive application that has significantly increased our conversions."'
-    },
-    {
-      author: 'Emily Rodriguez',
-      role: 'Product Manager, InnovateCo',
-      quote: '"John\'s technical expertise and professionalism made our project a success. He was always responsive to our needs and delivered ahead of schedule."'
-    }
-  ];
+  const testimonials=[
+  {
+    author: 'Rajesh Kumar',
+    role: 'Owner, FitLife Gym',
+    quote: '"CludFee built a fantastic website for my gym. It helped attract more members and manage class schedules easily."'
+  },
+  {
+    author: 'Anita Verma',
+    role: 'Manager, Spice Villa Restaurant',
+    quote: '"Thanks to CludFee’s work, our restaurant now has an online ordering system that’s easy to use and brought in more customers."'
+  },
+  {
+    author: 'Dr. Neelam Joshi',
+    role: 'General Practitioner, Joshi Clinic',
+    quote: '"CludFee created a professional and simple website for my clinic. Patients can now book appointments online with ease."'
+  },
+  {
+    author: 'Suresh Patel',
+    role: 'Owner, Patel Electronics Store',
+    quote: '"CludFee designed a modern e-commerce site for my electronics business that helped increase my sales substantially."'
+  },
+  {
+    author: 'Priya Sharma',
+    role: 'Founder, Bloom Boutique',
+    quote: '"CludFee developed a beautiful site for my boutique. It perfectly reflects my brand and helped me reach more customers online."'
+  }
+];
+;
 
   useEffect(() => {
     const interval = setInterval(() => {

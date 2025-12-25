@@ -1,136 +1,125 @@
-import React from 'react';
+import Seo from "./Seo";
+
 
 const PersonalDetails = () => {
   return (
-    <div className="container" style={{ padding: '80px 0', maxWidth: '900px' }}>
-      <h1 className="section-title">About John Doe</h1>
-      
-      <div style={{ display: 'grid', gridTemplateColumns: '1fr 2fr', gap: '40px', marginBottom: '50px' }}>
+    <div className="personal-container" >
+      <Seo
+        title="Developer CludFee | Full Stack Developer & AI Solutions Expert" 
+        description="Learn more about CludFee, a full stack developer specializing in React, Spring Boot, cloud architecture, and AI-powered applications." 
+        canonical="https://cludfee.netlify.app/personal-details"
+      />
+
+      <h1 className="section-title">About CLudFee</h1>
+
+      {/* Profile & Intro */}
+      <div className="profile-grid">
         <div>
-          <div className="profile-image-placeholder" style={{ marginBottom: '30px' }}>
+          <div className="profile-image-placeholder">
             <i className="fas fa-user"></i>
           </div>
-          
-          <div style={{ background: 'var(--dark-light)', padding: '20px', borderRadius: '10px' }}>
+
+          <div className="info-card">
             <h3>Personal Info</h3>
-            <div style={{ marginBottom: '15px' }}>
-              <strong>Name:</strong> John Doe
-            </div>
-            <div style={{ marginBottom: '15px' }}>
-              <strong>Location:</strong> San Francisco, CA
-            </div>
-            <div style={{ marginBottom: '15px' }}>
-              <strong>Email:</strong> john@example.com
-            </div>
-            <div style={{ marginBottom: '15px' }}>
-              <strong>Phone:</strong> (555) 123-4567
-            </div>
-            <div style={{ marginBottom: '15px' }}>
-              <strong>Freelance:</strong> Available
-            </div>
+            <p><strong>Name:</strong> Shekhar Singh</p>
+            <p><strong>Location:</strong> Bengaluru, KA</p>
+            <p><strong>Email:</strong> cludfee@gmail.com</p>
+            <p><strong>Phone:</strong> +91 95088 39640</p>
+            <p><strong>Freelance:</strong> Available</p>
           </div>
         </div>
-        
-        <div>
+
+        <div className="profile-details">
           <h2>Full Stack Developer</h2>
-          <p style={{ marginBottom: '20px' }}>
-            With over 5 years of experience in web development, I specialize in creating high-performance, 
-            responsive applications that help businesses achieve their goals. My approach combines technical 
-            expertise with a deep understanding of user experience to create solutions that not only look great 
-            but also deliver real results.
+          <p>
+            With over 2 years of experience in web development, I specialize in creating high-performance, 
+            responsive applications that help businesses achieve their goals...
           </p>
-          
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px', marginBottom: '30px' }}>
+
+          <div className="skills-grid">
             <div>
               <strong>Frontend Development</strong>
-              <div style={{ height: '10px', background: 'var(--dark)', borderRadius: '5px', marginTop: '5px' }}>
-                <div style={{ width: '95%', height: '100%', background: 'var(--primary)', borderRadius: '5px' }}></div>
+              <div className="progress-bar">
+                <div style={{ width: '95%' }}></div>
               </div>
             </div>
             <div>
               <strong>Backend Development</strong>
-              <div style={{ height: '10px', background: 'var(--dark)', borderRadius: '5px', marginTop: '5px' }}>
-                <div style={{ width: '90%', height: '100%', background: 'var(--primary)', borderRadius: '5px' }}></div>
+              <div className="progress-bar">
+                <div style={{ width: '90%' }}></div>
               </div>
             </div>
             <div>
               <strong>UI/UX Design</strong>
-              <div style={{ height: '10px', background: 'var(--dark)', borderRadius: '5px', marginTop: '5px' }}>
-                <div style={{ width: '85%', height: '100%', background: 'var(--primary)', borderRadius: '5px' }}></div>
+              <div className="progress-bar">
+                <div style={{ width: '85%' }}></div>
               </div>
             </div>
             <div>
               <strong>Database Design</strong>
-              <div style={{ height: '10px', background: 'var(--dark)', borderRadius: '5px', marginTop: '5px' }}>
-                <div style={{ width: '88%', height: '100%', background: 'var(--primary)', borderRadius: '5px' }}></div>
+              <div className="progress-bar">
+                <div style={{ width: '88%' }}></div>
               </div>
             </div>
           </div>
-          
+
           <p>
-            When I'm not coding, you can find me contributing to open-source projects, exploring new technologies, 
-            or sharing my knowledge through tech blogs and tutorials. I'm passionate about creating digital 
-            experiences that make a difference and helping businesses thrive in the digital world.
+            When I'm not coding, you can find me contributing to open-source projects, exploring new technologies...
           </p>
         </div>
       </div>
-      
-      <div style={{ background: 'var(--dark-light)', padding: '40px', borderRadius: '10px', marginBottom: '50px' }}>
-        <h2 style={{ textAlign: 'center', marginBottom: '30px' }}>Education & Experience</h2>
-        
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '30px' }}>
+
+      {/* Education & Experience */}
+      <div className="info-card">
+        <h2 className="center">Education & Experience</h2>
+        <div className="two-col-grid">
           <div>
             <h3>Education</h3>
-            <div style={{ marginBottom: '20px' }}>
+            <div>
               <h4>Bachelor of Computer Science</h4>
-              <p style={{ color: 'var(--primary)', marginBottom: '5px' }}>Stanford University, 2015-2019</p>
+              <p className="highlight">IIST Indore, 2020-2024</p>
               <p>Specialized in Web Technologies and Software Engineering</p>
             </div>
-            <div>
-              <h4>Full Stack Web Development Bootcamp</h4>
-              <p style={{ color: 'var(--primary)', marginBottom: '5px' }}>Tech Academy, 2019</p>
-              <p>Intensive 6-month program covering modern web development</p>
-            </div>
+            {/* <div>
+              <h4>Full Stack Bootcamp</h4>
+              <p className="highlight">Tech Academy, 2019</p>
+              <p>6-month program covering modern web development</p>
+            </div> */}
           </div>
-          
+
           <div>
             <h3>Experience</h3>
-            <div style={{ marginBottom: '20px' }}>
-              <h4>Senior Full Stack Developer</h4>
-              <p style={{ color: 'var(--primary)', marginBottom: '5px' }}>Tech Solutions Inc., 2020-Present</p>
-              <p>Leading development teams and architecting web applications for enterprise clients</p>
+            <div>
+              <h4>SOftware Engineer</h4>
+              <p className="highlight">Inspiron Lab., 2025-Present</p>
+              <p>Working with company as a Software Engineer</p>
             </div>
             <div>
-              <h4>Freelance Web Developer</h4>
-              <p style={{ color: 'var(--primary)', marginBottom: '5px' }}>2019-Present</p>
-              <p>Working with various clients to build custom web solutions and applications</p>
+              <h4>Freelance Developer</h4>
+              <p className="highlight">2024-Present</p>
+              <p>Building custom web solutions for various clients</p>
             </div>
           </div>
         </div>
       </div>
-      
-      <div style={{ background: 'var(--dark-light)', padding: '40px', borderRadius: '10px' }}>
-        <h2 style={{ textAlign: 'center', marginBottom: '30px' }}>Certifications</h2>
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '20px' }}>
-          <div style={{ textAlign: 'center' }}>
-            <div style={{ fontSize: '3rem', color: 'var(--primary)', marginBottom: '15px' }}>
-              <i className="fab fa-react"></i>
-            </div>
+
+      {/* Certifications */}
+      <div className="info-card">
+        <h2 className="center">Certifications</h2>
+        <div className="cert-grid">
+          <div>
+            <i className="fab fa-react cert-icon"></i>
             <h4>React Developer Certification</h4>
             <p>Advanced React concepts and best practices</p>
           </div>
-          <div style={{ textAlign: 'center' }}>
-            <div style={{ fontSize: '3rem', color: 'var(--primary)', marginBottom: '15px' }}>
-              <i className="fab fa-aws"></i>
-            </div>
-            <h4>AWS Certified Developer</h4>
-            <p>Cloud infrastructure and deployment</p>
+          <div>
+            <i className="fab fa-java cert-icon"></i>
+            <h4>Java FullStack Developer</h4>
+            <p>Application Development with Java and React</p>
           </div>
-          <div style={{ textAlign: 'center' }}>
-            <div style={{ fontSize: '3rem', color: 'var(--primary)', marginBottom: '15px' }}>
-              <i className="fas fa-database"></i>
-            </div>
-            <h4>MongoDB Certified Developer</h4>
+          <div>
+            <i className="fas fa-database cert-icon"></i>
+            <h4>MySQL Certified Developer</h4>
             <p>Database design and optimization</p>
           </div>
         </div>

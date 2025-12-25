@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import {useState, useEffect} from 'react';
 import {BrowserRouter as Router, Routes, Route} from 'react-router-dom';
 
 import Navbar from './components/Navbar';
@@ -16,12 +16,14 @@ import CTA from './components/CTA';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
 import Chatbot from './components/Chatbot';
-import Terms from './components/Terms';
-import Pricing from './components/Pricing';
 import PersonalDetails from './components/PersonalDetails';
 
 import './App.css';
 import '@fortawesome/fontawesome-free/css/all.min.css';
+import PageNotFound from './components/PageNotFound';
+import Policy from './components/Policy';
+import {HeadProvider} from 'react-head';
+import MetadataLogger from './components/MetadataLogger';
 
 function App() {
     const [theme, setTheme] = useState(localStorage.getItem('theme') || 'dark');
@@ -40,36 +42,41 @@ function App() {
     };
 
     return (
-        <Router>
-            <div className={`App ${theme}-theme`}>
-                <Navbar theme={theme} toggleTheme={toggleTheme}/>
-                <Routes>
-                    {/* Main Landing Page */}
-                    <Route
-                        path="/"
-                        element={<> < Hero /> <About/>
-                        <Services/>
-                        <TechStack/>
-                        <Expectations/>
-                        <Process/>
-                        <Portfolio/>
-                        <Testimonials/>
-                        <BookCall/>
-                        <FAQ/>
-                        <CTA/>
-                        <Contact/>
-                    </>
-                        }
-                    /> {/* Separate Routes */}
-                    <Route path="/terms" element={<Terms />}/>
-                    <Route path="/pricing" element={<Pricing />}/>
-                    <Route path="/personal-details" element={<PersonalDetails />}/>
-                </Routes>
-                <Footer/>
-                <Chatbot/>
-            </div>
-        </Router>
+        <HeadProvider>
+            <Router>
+                <div className={`App ${theme}-theme`}>
+                    <MetadataLogger/>
+                    <Navbar theme={theme} toggleTheme={toggleTheme}/>
+                    <Routes>
+                        {/* Main Landing Page */}
+                        <Route
+                            path="/"
+                            element={<> < Hero /> <About/>
+                            <Services/>
+                            <TechStack/>
+                            <Expectations/>
+                            <Process/>
+                            <Portfolio/>
+                            <Testimonials/>
+                            <BookCall/>
+                            <FAQ/>
+                            <CTA/>
+                            <Contact/>
+                        </>
+                            }
+                        /> {/* Separate Routes */}
+                        {/* <Route path="/pricing" element={<Pricing />}/> */}
+                        <Route path="/personal-details" element={<PersonalDetails />}/>
+                        <Route path="/privacy-policy" element={<Policy/>}/>
+                        <Route path="/contact" element={<Contact/>}/>
+                        <Route path="*" element={<PageNotFound />}/>
 
+                    </Routes>
+                    <Footer/>
+                    <Chatbot/>
+                </div>
+            </Router>
+        </HeadProvider>
     );
 }
 

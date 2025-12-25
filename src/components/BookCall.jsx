@@ -8,7 +8,7 @@ const BookCall = () => {
           <h2>Let's Talk!</h2>
           <p>Want to build something awesome? Let's chat about your project and how I can
             help bring your ideas to life.</p>
-          <a href="#" className="btn">Schedule a Free Consultation</a>
+          <a href="#contact" className="btn">Schedule a Free Consultation</a>
         </div>
       </div>
     </section>

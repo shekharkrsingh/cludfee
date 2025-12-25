@@ -6,7 +6,7 @@ const Pricing = () => {
   const pricingPlans = [
     {
       title: 'Basic Website',
-      price: billingCycle === 'project' ? '$1,500' : '$75/hour',
+      price: billingCycle === 'project' ? '$50' : '$10/hour',
       description: 'Perfect for small businesses and personal portfolios',
       features: [
         'Responsive Design',
@@ -18,38 +18,38 @@ const Pricing = () => {
       ],
       recommended: false
     },
-    {
-      title: 'Business Website',
-      price: billingCycle === 'project' ? '$3,500' : '$85/hour',
-      description: 'Ideal for growing businesses needing more functionality',
-      features: [
-        'Custom Design',
-        'Up to 10 Pages',
-        'CMS Integration',
-        'Advanced SEO',
-        '3 Rounds of Revisions',
-        'Social Media Integration',
-        '4 Weeks Delivery',
-        '1 Month Support'
-      ],
-      recommended: true
-    },
-    {
-      title: 'E-Commerce Solution',
-      price: billingCycle === 'project' ? '$6,500' : '$95/hour',
-      description: 'Complete online store with payment processing',
-      features: [
-        'Full E-Commerce Setup',
-        'Product Management',
-        'Payment Gateway Integration',
-        'Inventory System',
-        'Order Management',
-        'Advanced Security',
-        '6 Weeks Delivery',
-        '3 Months Support'
-      ],
-      recommended: false
-    }
+    // {
+    //   title: 'Business Website',
+    //   price: billingCycle === 'project' ? '$3,500' : '$85/hour',
+    //   description: 'Ideal for growing businesses needing more functionality',
+    //   features: [
+    //     'Custom Design',
+    //     'Up to 10 Pages',
+    //     'CMS Integration',
+    //     'Advanced SEO',
+    //     '3 Rounds of Revisions',
+    //     'Social Media Integration',
+    //     '4 Weeks Delivery',
+    //     '1 Month Support'
+    //   ],
+    //   recommended: true
+    // },
+    // {
+    //   title: 'E-Commerce Solution',
+    //   price: billingCycle === 'project' ? '$6,500' : '$95/hour',
+    //   description: 'Complete online store with payment processing',
+    //   features: [
+    //     'Full E-Commerce Setup',
+    //     'Product Management',
+    //     'Payment Gateway Integration',
+    //     'Inventory System',
+    //     'Order Management',
+    //     'Advanced Security',
+    //     '6 Weeks Delivery',
+    //     '3 Months Support'
+    //   ],
+    //   recommended: false
+    // }
   ];
 
   const hourlyServices = [
@@ -79,7 +79,7 @@ const Pricing = () => {
     <div className="container" style={{ padding: '80px 0' }}>
       <h1 className="section-title">Pricing & Packages</h1>
       
-      <div style={{ textAlign: 'center', marginBottom: '40px' }}>
+      <div style={{ textAlign: 'center', marginBottom: '40px'}}>
         <div className="btn-group" style={{ background: 'var(--dark-light)', padding: '5px', borderRadius: '30px', display: 'inline-flex' }}>
           <button 
             className={`btn ${billingCycle === 'project' ? '' : 'btn-secondary'}`}
@@ -116,6 +116,7 @@ const Pricing = () => {
               className="service-card" 
               style={{ 
                 position: 'relative',
+                maxWidth:'20em',
                 border: plan.recommended ? '2px solid var(--primary)' : '2px solid transparent',
                 transform: plan.recommended ? 'scale(1.05)' : 'scale(1)'
               }}

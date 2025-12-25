@@ -1,21 +1,23 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const Footer = () => {
   return (
     <footer>
       <div className="container">
         <div className="footer-content">
-          <div className="footer-logo">John<span>Doe</span></div>
+          <div className="footer-logo">Clud<span>Fee</span></div>
           <ul className="footer-links">
-            <li><a href="/">Home</a></li>
-            <li><a href="/personal-details">About Developer</a></li>
-            <li><a href="/terms">Terms</a></li>
-            <li><a href="/pricing">Pricing</a></li>
-            <li><a href="/#contact">Contact</a></li>
+            <li><Link to="/">Home</Link></li>
+            <li><Link to="/personal-details">About Developer</Link></li>
+            {/* <li><Link to="/terms">Terms</Link></li> */}
+            <li><Link to="/privacy-policy">Privacy Policy</Link></li>
+            {/* <li><Link to="/pricing">Pricing</Link></li> */}
+            <li><Link to="/contact">Contact</Link></li>
           </ul>
         </div>
         <div className="footer-bottom">
-          <p>&copy; 2023 John Doe - Built with HTML, CSS, JavaScript, and Passion</p>
+          <p>&copy; 2023 CludFee</p>
         </div>
       </div>
     </footer>

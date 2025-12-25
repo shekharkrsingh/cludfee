@@ -9,9 +9,9 @@ const Portfolio = () => {
       tags: ['HTML/CSS', 'JavaScript', 'React']
     },
     {
-      icon: 'fas fa-shopping-cart',
-      title: 'E-Commerce Dashboard',
-      description: 'A comprehensive admin dashboard for an e-commerce platform with analytics and inventory management.',
+      icon: 'fas fa-user-md',
+      title: 'H-Potion',
+      description: 'Is a doctor’s app designed to simplify booking and managing appointments. It streamlines scheduling and helps doctors stay organized for better patient care.',
       tags: ['React', 'Spring Boot', 'MongoDB']
     },
     {
@@ -40,7 +40,7 @@ const Portfolio = () => {
                     <span key={tagIndex} className="portfolio-tag">{tag}</span>
                   ))}
                 </div>
-                <a href="#" className="btn">View Project</a>
+                {/* <a href="#" className="btn">View Project</a> */}
               </div>
             </div>
           ))}

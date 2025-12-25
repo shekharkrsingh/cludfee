@@ -3,7 +3,7 @@ import React, { useState, useEffect, useRef } from 'react';
 const Chatbot = () => {
   const [isChatOpen, setIsChatOpen] = useState(false);
   const [messages, setMessages] = useState([
-    { text: "Hi there! I'm here to help you learn more about John's services. What would you like to know?", sender: 'bot' }
+    { text: "Hi there! I'm here to help you learn more about CludFee's services. What would you like to know?", sender: 'bot' }
   ]);
   const [inputValue, setInputValue] = useState('');
   const messagesEndRef = useRef(null);
@@ -58,7 +58,7 @@ const Chatbot = () => {
     ]);
 
     try {
-      const response = await fetch("http://localhost:8080/bot", {
+      const response = await fetch("https://cludfee.onrender.com/bot", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -75,7 +75,7 @@ const Chatbot = () => {
       }
 
       const data = await response.json();
-      console.log(data.summery)
+      console.log(data.summery);
 
       // Save latest summary into localStorage
       saveSummary(data.summery);
@@ -113,6 +113,26 @@ const Chatbot = () => {
     }
   }, [messages]);
 
+  // ---- Convert plain text URLs into clickable "link" anchors ----
+  const renderMessage = (text) => {
+    const urlRegex = /(https?:\/\/[^\s]+)/g;
+    return text.split(urlRegex).map((part, i) =>
+      urlRegex.test(part) ? (
+        <a
+          key={i}
+          href={part}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="chat-link"
+        >
+          link
+        </a>
+      ) : (
+        part
+      )
+    );
+  };
+
   return (
     <div className="chatbot-container">
       <div className="chatbot-button" id="chatbot-toggle" onClick={toggleChat}>
@@ -124,7 +144,7 @@ const Chatbot = () => {
         id="chatbot-window"
       >
         <div className="chatbot-header">
-          <h3>John Doe Assistant</h3>
+          <h3>CludFee Assistant</h3>
           <button
             className="chatbot-close"
             id="chatbot-close"
@@ -137,7 +157,7 @@ const Chatbot = () => {
         <div className="chatbot-messages" id="chatbot-messages">
           {messages.map((message, index) => (
             <div key={index} className={`message ${message.sender}-message`}>
-              <p>{message.text}</p>
+              <p>{renderMessage(message.text)}</p>
             </div>
           ))}
           <div ref={messagesEndRef} /> {/* Auto-scroll anchor */}
