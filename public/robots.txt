@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://cludfee.netlify.app/sitemap.xml

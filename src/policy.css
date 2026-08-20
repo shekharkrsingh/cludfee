@@ -1,0 +1,35 @@
+/* ==========================================================================
+   POLICY STYLES
+   ========================================================================== */
+
+.policy-summary {
+  background: linear-gradient(135deg, var(--primary), var(--secondary));
+  padding: 30px;
+  border-radius: 16px;
+  color: white;
+  margin-top: 40px;
+  box-shadow: 0 15px 35px rgba(176, 141, 87, 0.2);
+}
+
+.policy-summary h3 {
+  color: white !important;
+  -webkit-text-fill-color: white !important;
+  margin-bottom: 15px;
+  background: none;
+  display: flex;
+  align-items: center;
+}
+
+.policy-summary h3 i {
+  margin-right: 10px;
+}
+
+.policy-summary p {
+  color: rgba(255, 255, 255, 0.95) !important;
+}
+
+.policy-summary .summary-disclaimer {
+  font-size: 0.9rem;
+  opacity: 0.9;
+  margin-top: 15px;
+}
