@@ -481,7 +481,14 @@ nav.scrolled {
   font-size: 1.5rem;
   cursor: pointer;
   color: var(--text);
+  background: transparent;
+  border: none;
+  outline: none;
   transition: var(--transition-fast);
+}
+
+.menu-btn:hover {
+  color: var(--primary);
 }
 
 .theme-toggle-btn {
