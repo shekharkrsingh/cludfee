@@ -1,4 +1,5 @@
 import React from 'react';
+import Tilt from 'react-parallax-tilt';
 
 const Portfolio = () => {
   const projects = [
@@ -25,10 +26,23 @@ const Portfolio = () => {
   return (
     <section id="portfolio">
       <div className="container">
-        <h2 className="section-title">My Work</h2>
-        <div className="portfolio-grid">
+        <h2 className="section-title reveal">My Work</h2>
+        <div className="portfolio-grid reveal-stagger">
           {projects.map((project, index) => (
-            <div key={index} className="portfolio-item">
+            <Tilt 
+              key={index} 
+              tiltMaxAngleX={8} 
+              tiltMaxAngleY={8} 
+              perspective={1000} 
+              scale={1.02} 
+              transitionSpeed={1000} 
+              gyroscope={true}
+              glareEnable={true} 
+              glareMaxOpacity={0.12}
+              glareColor="#ffffff" 
+              glarePosition="all"
+              className="portfolio-item"
+            >
               <div className="portfolio-img">
                 <i className={project.icon}></i>
               </div>
@@ -40,9 +54,8 @@ const Portfolio = () => {
                     <span key={tagIndex} className="portfolio-tag">{tag}</span>
                   ))}
                 </div>
-                {/* <a href="#" className="btn">View Project</a> */}
               </div>
-            </div>
+            </Tilt>
           ))}
         </div>
       </div>

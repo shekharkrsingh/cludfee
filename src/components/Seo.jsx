@@ -1,7 +1,7 @@
 import React from 'react';
 import { Title, Meta, Link } from 'react-head';
 
-const Seo = ({ title, description, canonical }) => {
+const Seo = ({ title, description, canonical, schema }) => {
   return (
     <>
       {title && <Title>{title}</Title>}
@@ -18,6 +18,13 @@ const Seo = ({ title, description, canonical }) => {
       {title && <Meta name="twitter:title" content={title} />}
       {description && <Meta name="twitter:description" content={description} />}
       <Meta name="twitter:card" content="summary_large_image" />
+
+      {/* JSON-LD Schema */}
+      {schema && (
+        <script type="application/ld+json">
+          {JSON.stringify(schema)}
+        </script>
+      )}
     </>
   );
 };

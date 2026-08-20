@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import ParticlesBackground from './ParticlesBackground';
+import Seo from './Seo';
 
 const Terms = () => {
   const [activeSection, setActiveSection] = useState('introduction');
@@ -29,102 +31,109 @@ const Terms = () => {
   };
 
   return (
-    <div className="container" style={{ padding: '80px 0', maxWidth: '1200px' }}>
-      <h1 className="section-title">Terms & Conditions</h1>
-      <p style={{ textAlign: 'center', color: 'var(--text-muted)', marginBottom: '40px' }}>
-        Last Updated: {new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
-      </p>
+    <div style={{ position: 'relative' }}>
+      <Seo 
+        title="Terms and Conditions | CludFee"
+        description="Read the terms and conditions for using CludFee's services."
+        canonical="https://cludfee.netlify.app/terms"
+      />
+      <ParticlesBackground />
+      <div className="container" style={{ padding: '80px 0', maxWidth: '1200px', position: 'relative', zIndex: 10 }}>
+        <h1 className="section-title">Terms & Conditions</h1>
+        <p style={{ textAlign: 'center', color: 'var(--text-muted)', marginBottom: '40px' }}>
+          Last Updated: {new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
+        </p>
 
-      <div style={{ 
-        background: 'linear-gradient(135deg, var(--primary), var(--secondary))', 
-        padding: '20px', 
-        borderRadius: '10px', 
-        marginBottom: '40px',
-        color: 'white',
-        textAlign: 'center'
-      }}>
-        <h3><i className="fas fa-exclamation-triangle" style={{ marginRight: '10px' }}></i>Important Legal Notice</h3>
-        <p>Please read these Terms and Conditions carefully before using our services. By accessing or using our services, you agree to be bound by these Terms.</p>
-      </div>
-
-      <div style={{ display: 'grid', gridTemplateColumns: '1fr 3fr', gap: '40px' }}>
-        {/* Table of Contents */}
-        <div style={{ position: 'sticky', top: '100px', alignSelf: 'start' }}>
-          <div style={{ background: 'var(--dark-light)', padding: '20px', borderRadius: '10px' }}>
-            <h3 style={{ marginBottom: '20px', paddingBottom: '10px', borderBottom: '2px solid var(--primary)' }}>Contents</h3>
-            <ul style={{ listStyle: 'none', padding: 0 }}>
-              {sections.map((section) => (
-                <li key={section.id} style={{ marginBottom: '10px' }}>
-                  <button
-                    onClick={() => scrollToSection(section.id)}
-                    style={{
-                      background: 'none',
-                      border: 'none',
-                      color: activeSection === section.id ? 'var(--primary)' : 'var(--text)',
-                      cursor: 'pointer',
-                      textAlign: 'left',
-                      width: '100%',
-                      padding: '5px 10px',
-                      borderRadius: '5px',
-                      transition: 'var(--transition)',
-                      fontWeight: activeSection === section.id ? '600' : '400'
-                    }}
-                    onMouseOver={(e) => e.target.style.background = 'rgba(110, 68, 255, 0.1)'}
-                    onMouseOut={(e) => e.target.style.background = 'none'}
-                  >
-                    {section.title}
-                  </button>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Quick Actions */}
-          <div style={{ background: 'var(--dark-light)', padding: '20px', borderRadius: '10px', marginTop: '20px' }}>
-            <h4 style={{ marginBottom: '15px' }}>Quick Actions</h4>
-            <Link to="/policy" className="btn" style={{ width: '100%', marginBottom: '10px', textAlign: 'center' }}>
-              View Privacy Policy
-            </Link>
-            <a href="#contact" className="btn btn-secondary" style={{ width: '100%', textAlign: 'center' }}>
-              Contact About Terms
-            </a>
-          </div>
-
-          {/* Acceptance Toggle */}
-          <div style={{ background: 'var(--dark-light)', padding: '20px', borderRadius: '10px', marginTop: '20px' }}>
-            <h4 style={{ marginBottom: '15px' }}>Terms Acceptance</h4>
-            <label style={{ display: 'flex', alignItems: 'center', cursor: 'pointer' }}>
-              <input 
-                type="checkbox" 
-                checked={accepted} 
-                onChange={() => setAccepted(!accepted)}
-                style={{ marginRight: '10px' }}
-              />
-              I have read and accept the Terms & Conditions
-            </label>
-            {accepted && (
-              <div style={{ 
-                background: 'rgba(76, 175, 80, 0.2)', 
-                color: '#4CAF50', 
-                padding: '10px', 
-                borderRadius: '5px', 
-                marginTop: '10px',
-                fontSize: '0.9rem'
-              }}>
-                <i className="fas fa-check-circle" style={{ marginRight: '5px' }}></i>
-                Thank you for accepting our Terms & Conditions
-              </div>
-            )}
-          </div>
+        <div style={{ 
+          background: 'linear-gradient(135deg, var(--primary), var(--secondary))', 
+          padding: '20px', 
+          borderRadius: '10px', 
+          marginBottom: '40px',
+          color: 'white',
+          textAlign: 'center'
+        }}>
+          <h3><i className="fas fa-exclamation-triangle" style={{ marginRight: '10px' }}></i>Important Legal Notice</h3>
+          <p>Please read these Terms and Conditions carefully before using our services. By accessing or using our services, you agree to be bound by these Terms.</p>
         </div>
 
-        {/* Terms Content */}
-        <div>
-          <div id="introduction" style={{ scrollMarginTop: '120px' }}>
-            <h2>1. Introduction</h2>
-            <div style={{ background: 'var(--dark-light)', padding: '30px', borderRadius: '10px', marginBottom: '40px' }}>
-              <p>Welcome to John Doe's Terms and Conditions. These terms govern your use of our services, website, and any related applications (collectively, the "Services").</p>
-              <p>By accessing or using our Services, you agree to be bound by these Terms and our Privacy Policy. If you disagree with any part of these Terms, you may not access our Services.</p>
+        <div className="legal-layout">
+          {/* Table of Contents */}
+          <div style={{ position: 'sticky', top: '100px', alignSelf: 'start' }}>
+            <div style={{ background: 'var(--dark-light)', padding: '20px', borderRadius: '10px' }}>
+              <h3 style={{ marginBottom: '20px', paddingBottom: '10px', borderBottom: '2px solid var(--primary)' }}>Contents</h3>
+              <ul style={{ listStyle: 'none', padding: 0 }}>
+                {sections.map((section) => (
+                  <li key={section.id} style={{ marginBottom: '10px' }}>
+                    <button
+                      onClick={() => scrollToSection(section.id)}
+                      style={{
+                        background: 'none',
+                        border: 'none',
+                        color: activeSection === section.id ? 'var(--primary)' : 'var(--text)',
+                        cursor: 'pointer',
+                        textAlign: 'left',
+                        width: '100%',
+                        padding: '5px 10px',
+                        borderRadius: '5px',
+                        transition: 'var(--transition)',
+                        fontWeight: activeSection === section.id ? '600' : '400'
+                      }}
+                      onMouseOver={(e) => e.target.style.background = 'rgba(110, 68, 255, 0.1)'}
+                      onMouseOut={(e) => e.target.style.background = 'none'}
+                    >
+                      {section.title}
+                    </button>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Quick Actions */}
+            <div style={{ background: 'var(--dark-light)', padding: '20px', borderRadius: '10px', marginTop: '20px' }}>
+              <h4 style={{ marginBottom: '15px' }}>Quick Actions</h4>
+              <Link to="/policy" className="btn" style={{ width: '100%', marginBottom: '10px', textAlign: 'center' }}>
+                View Privacy Policy
+              </Link>
+              <a href="#contact" className="btn btn-secondary" style={{ width: '100%', textAlign: 'center' }}>
+                Contact About Terms
+              </a>
+            </div>
+
+            {/* Acceptance Toggle */}
+            <div style={{ background: 'var(--dark-light)', padding: '20px', borderRadius: '10px', marginTop: '20px' }}>
+              <h4 style={{ marginBottom: '15px' }}>Terms Acceptance</h4>
+              <label style={{ display: 'flex', alignItems: 'center', cursor: 'pointer' }}>
+                <input 
+                  type="checkbox" 
+                  checked={accepted} 
+                  onChange={() => setAccepted(!accepted)}
+                  style={{ marginRight: '10px' }}
+                />
+                I have read and accept the Terms & Conditions
+              </label>
+              {accepted && (
+                <div style={{ 
+                  background: 'rgba(76, 175, 80, 0.2)', 
+                  color: '#4CAF50', 
+                  padding: '10px', 
+                  borderRadius: '5px', 
+                  marginTop: '10px',
+                  fontSize: '0.9rem'
+                }}>
+                  <i className="fas fa-check-circle" style={{ marginRight: '5px' }}></i>
+                  Thank you for accepting our Terms & Conditions
+                </div>
+              )}
+            </div>
+          </div>
+
+          {/* Terms Content */}
+          <div>
+            <div id="introduction" style={{ scrollMarginTop: '120px' }}>
+              <h2>1. Introduction</h2>
+              <div style={{ background: 'var(--dark-light)', padding: '30px', borderRadius: '10px', marginBottom: '40px' }}>
+                <p>Welcome to John Doe's Terms and Conditions. These terms govern your use of our services, website, and any related applications (collectively, the "Services").</p>
+                <p>By accessing or using our Services, you agree to be bound by these Terms and our Privacy Policy. If you disagree with any part of these Terms, you may not access our Services.</p>
               
               <div style={{ background: 'rgba(110, 68, 255, 0.1)', padding: '15px', borderRadius: '8px', margin: '15px 0' }}>
                 <h4 style={{ color: 'var(--primary)' }}><i className="fas fa-info-circle" style={{ marginRight: '10px' }}></i>Note</h4>
@@ -487,6 +496,7 @@ const Terms = () => {
         </div>
       </div>
       </div>
+    </div>
   );
 };
 

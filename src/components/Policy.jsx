@@ -1,68 +1,88 @@
-import React, {useState} from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import Seo from './Seo';
+import ParticlesBackground from './ParticlesBackground';
+import { Link } from 'react-router-dom';
+import '../policy.css';
 
 const Policy = () => {
     const [activeSection, setActiveSection] = useState('introduction');
+    const observerRef = useRef(null);
 
     const sections = [
-        {
-            id: 'introduction',
-            title: 'Introduction'
-        }, {
-            id: 'information-collected',
-            title: 'Information Collected'
-        }, {
-            id: 'how-we-use',
-            title: 'How We Use Information'
-        }, {
-            id: 'data-protection',
-            title: 'Data Protection'
-        }, {
-            id: 'cookies',
-            title: 'Cookies'
-        }, {
-            id: 'third-party',
-            title: 'Third-Party Services'
-        }, {
-            id: 'user-rights',
-            title: 'Your Rights'
-        }, {
-            id: 'policy-changes',
-            title: 'Policy Changes'
-        }, {
-            id: 'contact',
-            title: 'Contact Us'
-        }
+        { id: 'introduction',        title: 'Introduction' },
+        { id: 'information-collected', title: 'Information Collected' },
+        { id: 'how-we-use',          title: 'How We Use Information' },
+        { id: 'data-protection',     title: 'Data Protection' },
+        { id: 'cookies',             title: 'Cookies' },
+        { id: 'third-party',         title: 'Third-Party Services' },
+        { id: 'user-rights',         title: 'Your Rights' },
+        { id: 'policy-changes',      title: 'Policy Changes' },
+        { id: 'contact',             title: 'Contact Us' },
     ];
+
+    // --- Scroll-spy: update active sidebar item as user scrolls ---
+    useEffect(() => {
+        const sectionEls = sections
+            .map(s => document.getElementById(s.id))
+            .filter(Boolean);
+
+        observerRef.current = new IntersectionObserver(
+            (entries) => {
+                // Find the topmost intersecting section
+                const visible = entries
+                    .filter(e => e.isIntersecting)
+                    .sort((a, b) => a.boundingClientRect.top - b.boundingClientRect.top);
+                if (visible.length > 0) {
+                    setActiveSection(visible[0].target.id);
+                }
+            },
+            {
+                root: null,
+                // Trigger when section top is within the top 40% of viewport
+                rootMargin: '-10% 0px -55% 0px',
+                threshold: 0,
+            }
+        );
+
+        sectionEls.forEach(el => observerRef.current.observe(el));
+
+        return () => observerRef.current && observerRef.current.disconnect();
+        // eslint-disable-next-line
+    }, []);
 
     const scrollToSection = (sectionId) => {
         setActiveSection(sectionId);
         const element = document.getElementById(sectionId);
         if (element) {
-            element.scrollIntoView({behavior: 'smooth'});
+            element.scrollIntoView({ behavior: 'smooth' });
         }
     };
 
-    return (
-        <div
-            className="container"
-            style={{
-                padding: '80px 0',
-                maxWidth: '1200px'
-            }}>
-            <Seo
-                title="Privacy Policy | CludFee" 
-                description="CludFee values your privacy. Read our Privacy Policy to understand how we collect, use, and protect your personal information" 
-                canonical="https://cludfee.netlify.app/privacy-policy"
-                />
 
-            <h1 className="section-title">Privacy Policy</h1>
-            <p
+    return (
+        <div style={{ position: 'relative' }}>
+            <ParticlesBackground />
+            <div
+                className="container"
                 style={{
-                    textAlign: 'center',
-                    color: 'var(--text-muted)',
-                    marginBottom: '40px'
+                    padding: '80px 0',
+                    maxWidth: '1200px',
+                    position: 'relative',
+                    zIndex: 10
                 }}>
+                <Seo
+                    title="Privacy Policy | CludFee" 
+                    description="CludFee values your privacy. Read our Privacy Policy to understand how we collect, use, and protect your personal information" 
+                    canonical="https://cludfee.netlify.app/privacy-policy"
+                    />
+
+                <h1 className="section-title">Privacy Policy</h1>
+                <p
+                    style={{
+                        textAlign: 'center',
+                        color: 'var(--text-muted)',
+                        marginBottom: '40px'
+                    }}>
                 Last Updated: {
                     new Date().toLocaleDateString('en-US', {
                         year: 'numeric',
@@ -72,12 +92,7 @@ const Policy = () => {
                 }
             </p>
 
-            <div
-                style={{
-                    display: 'grid',
-                    gridTemplateColumns: '1fr 3fr',
-                    gap: '40px'
-                }}>
+            <div className="legal-layout">
                 {/* Table of Contents */}
                 <div
                     className='sidebar'
@@ -96,59 +111,67 @@ const Policy = () => {
                             style={{
                                 marginBottom: '20px',
                                 paddingBottom: '10px',
-                                borderBottom: '2px solid var(--primary)'
+                                borderBottom: '2px solid var(--primary)',
+                                color: 'var(--text)',
+                                WebkitTextFillColor: 'var(--text)',
+                                background: 'none',
                             }}>Contents</h3>
-                        <ul
-                            style={{
-                                listStyle: 'none',
-                                padding: 0
-                            }}>
-                            {
-                                sections.map((section) => (
-                                    <li
-                                        key={section.id}
-                                        style={{
-                                            marginBottom: '10px'
-                                        }}>
+                        <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
+                            {sections.map((section) => {
+                                const isActive = activeSection === section.id;
+                                return (
+                                    <li key={section.id} style={{ marginBottom: '4px' }}>
                                         <button
                                             onClick={() => scrollToSection(section.id)}
                                             style={{
-                                                background: 'none',
+                                                background: isActive
+                                                    ? 'rgba(99, 102, 241, 0.12)'
+                                                    : 'transparent',
                                                 border: 'none',
-                                                color: activeSection === section.id
+                                                borderLeft: isActive
+                                                    ? '3px solid var(--primary)'
+                                                    : '3px solid transparent',
+                                                color: isActive
                                                     ? 'var(--primary)'
-                                                    : 'var(--text)',
+                                                    : 'var(--text-muted)',
                                                 cursor: 'pointer',
                                                 textAlign: 'left',
                                                 width: '100%',
-                                                padding: '8px 10px',
-                                                borderRadius: '5px',
-                                                transition: 'var(--transition)',
-                                                fontWeight: activeSection === section.id
-                                                    ? '600'
-                                                    : '400'
+                                                padding: '9px 14px',
+                                                borderRadius: '0 8px 8px 0',
+                                                transition: 'all 0.25s ease',
+                                                fontWeight: isActive ? '700' : '400',
+                                                fontSize: '0.9rem',
+                                                fontFamily: 'inherit',
+                                                display: 'flex',
+                                                alignItems: 'center',
+                                                gap: '8px',
                                             }}
-                                            onMouseOver={(e) => e.target.style.background = 'rgba(110, 68, 255, 0.1)'}
-                                            onMouseOut={(e) => e.target.style.background = 'none'}>
+                                        >
+                                            {isActive && (
+                                                <span style={{
+                                                    width: '6px', height: '6px',
+                                                    borderRadius: '50%',
+                                                    background: 'var(--primary)',
+                                                    flexShrink: 0,
+                                                    boxShadow: '0 0 6px var(--primary)',
+                                                }} />
+                                            )}
                                             {section.title}
                                         </button>
                                     </li>
-                                ))
-                            }
+                                );
+                            })}
                         </ul>
+
                     </div>
 
-                    {/* Quick Actions */}
-                    {/* <div style={{ background: 'var(--dark-light)', padding: '20px', borderRadius: '10px', marginTop: '20px' }}>
-            <h4 style={{ marginBottom: '15px' }}>Quick Actions</h4>
-            <Link to="/terms" className="btn" style={{ width: '100%', marginBottom: '10px', textAlign: 'center' }}>
-              View Terms
-            </Link>
-            <a href="#contact" className="btn btn-secondary" style={{ width: '100%', textAlign: 'center' }}>
-              Contact About Data
-            </a>
-          </div> */
-                    }
+                    <div style={{ background: 'var(--dark-light)', padding: '20px', borderRadius: '10px', marginTop: '20px' }}>
+                        <h4 style={{ marginBottom: '15px' }}>Quick Actions</h4>
+                        <a href="#contact" className="btn btn-secondary" style={{ width: '100%', textAlign: 'center' }}>
+                            Contact Privacy Team
+                        </a>
+                    </div>
                 </div>
 
                 {/* Policy Content */}
@@ -751,38 +774,21 @@ const Policy = () => {
                     </div>
 
                     {/* Policy Summary */}
-                    <div
-                        style={{
-                            background: 'linear-gradient(135deg, var(--primary), var(--secondary))',
-                            padding: '30px',
-                            borderRadius: '10px',
-                            color: 'white',
-                            marginTop: '40px'
-                        }}>
-                        <h3
-                            style={{
-                                color: 'white',
-                                marginBottom: '15px'
-                            }}>
-                            <i
-                                className="fas fa-info-circle"
-                                style={{
-                                    marginRight: '10px'
-                                }}></i>Policy Summary</h3>
+                    <div className="policy-summary">
+                        <h3>
+                            <i className="fas fa-info-circle"></i> Policy Summary
+                        </h3>
                         <p>This Privacy Policy explains how CludFee collects, uses, and protects your
                             personal information. We value your privacy and are committed to being
                             transparent about our data practices. If you have any questions, don't hesitate
                             to contact us.</p>
-                        <p
-                            style={{
-                                fontSize: '0.9rem',
-                                opacity: '0.9',
-                                marginTop: '15px'
-                            }}>This
-                            summary is provided for your convenience but is not a substitute for reading the
-                            full policy.</p>
+                        <p className="summary-disclaimer">
+                            This summary is provided for your convenience but is not a substitute for reading the
+                            full policy.
+                        </p>
                     </div>
                 </div>
+            </div>
             </div>
         </div>
     );

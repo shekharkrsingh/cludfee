@@ -17,13 +17,21 @@ import Contact from './components/Contact';
 import Footer from './components/Footer';
 import Chatbot from './components/Chatbot';
 import PersonalDetails from './components/PersonalDetails';
+import CustomCursor from './components/CustomCursor';
+import PageNotFound from './components/PageNotFound';
+import Policy from './components/Policy';
 
 import './App.css';
 import '@fortawesome/fontawesome-free/css/all.min.css';
-import PageNotFound from './components/PageNotFound';
-import Policy from './components/Policy';
 import {HeadProvider} from 'react-head';
 import MetadataLogger from './components/MetadataLogger';
+
+import { useIntersectionObserver } from './hooks/useIntersectionObserver';
+
+function ScrollRevealManager() {
+    useIntersectionObserver();
+    return null;
+}
 
 function App() {
     const [theme, setTheme] = useState(localStorage.getItem('theme') || 'dark');
@@ -44,7 +52,10 @@ function App() {
     return (
         <HeadProvider>
             <Router>
+                <ScrollRevealManager />
                 <div className={`App ${theme}-theme`}>
+                    <div className="noise-overlay"></div>
+                    <CustomCursor />
                     <MetadataLogger/>
                     <Navbar theme={theme} toggleTheme={toggleTheme}/>
                     <Routes>

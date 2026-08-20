@@ -1,4 +1,5 @@
 import React from 'react';
+import Tilt from 'react-parallax-tilt';
 
 const Services = () => {
   const services = [
@@ -37,16 +38,29 @@ const Services = () => {
   return (
     <section id="services">
       <div className="container">
-        <h2 className="section-title">Services I Offer</h2>
-        <div className="services-grid">
+        <h2 className="section-title reveal">Services I Offer</h2>
+        <div className="services-grid reveal-stagger">
           {services.map((service, index) => (
-            <div key={index} className="service-card">
+            <Tilt 
+              key={index} 
+              tiltMaxAngleX={10} 
+              tiltMaxAngleY={10} 
+              perspective={1000} 
+              scale={1.02} 
+              transitionSpeed={1000} 
+              gyroscope={true}
+              glareEnable={true} 
+              glareMaxOpacity={0.15}
+              glareColor="#ffffff" 
+              glarePosition="all"
+              className="service-card"
+            >
               <div className="service-icon">
                 <i className={service.icon}></i>
               </div>
               <h3>{service.title}</h3>
               <p>{service.description}</p>
-            </div>
+            </Tilt>
           ))}
         </div>
       </div>

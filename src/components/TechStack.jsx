@@ -36,9 +36,13 @@ const TechStack = () => {
 
   return (
     <section id="tech">
+      {/* Ambient glow in background */}
+      <div className="glow-blob-2" style={{ top: '20%', right: '10%', width: '350px', height: '350px' }}></div>
+      
       <div className="container">
-        <h2 className="section-title">Technologies I Work With</h2>
-        <div className="tech-categories">
+        <h2 className="section-title reveal">Technologies I Work With</h2>
+        
+        <div className="tech-categories reveal-stagger">
           {techCategories.slice(0, 2).map((category, index) => (
             <div key={index} className="tech-category">
               <h3>{category.title}</h3>
@@ -53,7 +57,8 @@ const TechStack = () => {
             </div>
           ))}
         </div>
-        <div className="tech-categories">
+        
+        <div className="tech-categories reveal-stagger" style={{ marginTop: '30px' }}>
           {techCategories.slice(2).map((category, index) => (
             <div key={index} className="tech-category">
               <h3>{category.title}</h3>

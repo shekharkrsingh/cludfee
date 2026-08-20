@@ -33,21 +33,23 @@ const FAQ = () => {
   return (
     <section id="faq">
       <div className="container">
-        <h2 className="section-title">Frequently Asked Questions</h2>
-        <div className="faq-container">
+        <h2 className="section-title reveal">Frequently Asked Questions</h2>
+        <div className="faq-container reveal-stagger">
           {faqs.map((faq, index) => (
             <div key={index} className={`faq-item ${activeIndex === index ? 'active' : ''}`}>
               <div className="faq-question" onClick={() => toggleFAQ(index)}>
                 {faq.question}
                 <span className="faq-toggle">
-                  <i className={activeIndex === index ? 'fas fa-minus' : 'fas fa-plus'}></i>
+                  <i className="fas fa-plus"></i>
                 </span>
               </div>
-              {activeIndex === index && (
+              <div className="faq-answer-wrapper">
                 <div className="faq-answer">
-                  <p>{faq.answer}</p>
+                  <div className="faq-answer-content">
+                    <p>{faq.answer}</p>
+                  </div>
                 </div>
-              )}
+              </div>
             </div>
           ))}
         </div>

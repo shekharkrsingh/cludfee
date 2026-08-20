@@ -37,8 +37,8 @@ const Expectations = () => {
   return (
     <section id="expectations">
       <div className="container">
-        <h2 className="section-title">What You Can Expect Working With Me</h2>
-        <div className="expectations-grid">
+        <h2 className="section-title reveal">What You Can Expect Working With Me</h2>
+        <div className="expectations-grid reveal-stagger">
           {expectations.map((expectation, index) => (
             <div key={index} className="expectation-card">
               <div className="expectation-icon">

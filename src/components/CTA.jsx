@@ -4,7 +4,7 @@ const CTA = () => {
   return (
     <section id="cta">
       <div className="container">
-        <div className="cta">
+        <div className="cta reveal-scale">
           <h2>Ready to Get Started?</h2>
           <p>Get a stunning one-page web app built fast and right. Let's discuss your
             project today.</p>

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-// import Seo from './Seo';
+import ParticlesBackground from './ParticlesBackground';
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -53,17 +53,12 @@ const Contact = () => {
   };
 
   return (
-    <section id="contact" style={{marginTop: '2rem'}}>
-      <div className="container">
-        {/* <Seo
-          title="Contact CludFee | Get In Touch Today" 
-          description="Have a project in mind? Contact CludFee for full stack development, AI solutions, and consultation. Let’s build something great together." 
-          canonical="https://cludfee.netlify.app/contact"
-        /> */}
-
-        <h2 className="section-title">Get In Touch</h2>
+    <section id="contact" style={{ position: 'relative', paddingTop: '20px' }}>
+      <ParticlesBackground />
+      <div className="container" style={{ position: 'relative', zIndex: 10 }}>
+        <h2 className="section-title reveal">Get In Touch</h2>
         <div className="contact-container">
-          <div className="contact-form">
+          <div className="contact-form reveal-left">
             <form id="contactForm" onSubmit={handleSubmit}>
               <div className="form-group">
                 <label htmlFor="name">Your Name<span>*</span></label>
@@ -107,7 +102,7 @@ const Contact = () => {
               <button type="submit" className="btn">Send Message</button>
             </form>
           </div>
-          <div className="contact-info">
+          <div className="contact-info reveal-right">
             <div className="contact-details">
               <div className="contact-detail">
                 <div className="contact-icon">
@@ -134,24 +129,10 @@ const Contact = () => {
                 </div>
                 <div>
                   <h3>Availability</h3>
-                  <p>Monday - Friday: 9AM - 6PM PST</p>
+                  <p>Monday - Friday: 9AM - 6PM IST</p>
                 </div>
               </div>
             </div>
-            {/* <div className="social-links">
-              <a href="#" className="social-link">
-                <i className="fab fa-linkedin-in"></i>
-              </a>
-              <a href="#" className="social-link">
-                <i className="fab fa-github"></i>
-              </a>
-              <a href="#" className="social-link">
-                <i className="fab fa-twitter"></i>
-              </a>
-              <a href="#" className="social-link">
-                <i className="fab fa-dribbble"></i>
-              </a>
-            </div> */}
           </div>
         </div>
       </div>

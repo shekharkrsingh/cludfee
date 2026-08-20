@@ -44,12 +44,14 @@ const Chatbot = () => {
     setMessages((prev) => [...prev, { text, sender }]);
   };
 
-  const sendMessage = async () => {
-    if (!inputValue.trim()) return;
+  const sendMessage = async (customMessage) => {
+    const messageToSend = typeof customMessage === 'string' ? customMessage.trim() : inputValue.trim();
+    if (!messageToSend) return;
 
-    const userMessage = inputValue.trim();
-    addMessage(userMessage, "user");
-    setInputValue("");
+    addMessage(messageToSend, "user");
+    if (!customMessage) {
+      setInputValue("");
+    }
 
     // Add typing indicator
     setMessages((prev) => [
@@ -65,7 +67,7 @@ const Chatbot = () => {
         },
         body: JSON.stringify({
           key: 1,
-          message: userMessage,
+          message: messageToSend,
           previousSummary: getSummary(), // use stored summary
         }),
       });
@@ -75,7 +77,6 @@ const Chatbot = () => {
       }
 
       const data = await response.json();
-      console.log(data.summery);
 
       // Save latest summary into localStorage
       saveSummary(data.summery);
@@ -96,8 +97,7 @@ const Chatbot = () => {
   };
 
   const handleQuickQuestion = (question) => {
-    setInputValue(question);
-    sendMessage();
+    sendMessage(question);
   };
 
   const handleKeyPress = (e) => {
@@ -114,29 +114,37 @@ const Chatbot = () => {
   }, [messages]);
 
   // ---- Convert plain text URLs into clickable "link" anchors ----
+  // Strip trailing punctuation (. , ) ] !) that may be part of a sentence, not the URL
   const renderMessage = (text) => {
     const urlRegex = /(https?:\/\/[^\s]+)/g;
-    return text.split(urlRegex).map((part, i) =>
-      urlRegex.test(part) ? (
-        <a
-          key={i}
-          href={part}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="chat-link"
-        >
-          link
-        </a>
-      ) : (
-        part
-      )
-    );
+    return text.split(urlRegex).map((part, i) => {
+      if (urlRegex.test(part)) {
+        // Strip trailing punctuation that's not part of the URL
+        const cleanUrl = part.replace(/[.,;!?)]+$/, '');
+        const trailingPunct = part.slice(cleanUrl.length);
+        return (
+          <React.Fragment key={i}>
+            <a
+              href={cleanUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="chat-link"
+              style={{ textDecoration: 'underline', color: 'var(--secondary)', fontWeight: 600 }}
+            >
+              {cleanUrl}
+            </a>
+            {trailingPunct}
+          </React.Fragment>
+        );
+      }
+      return part;
+    });
   };
 
   return (
     <div className="chatbot-container">
       <div className="chatbot-button" id="chatbot-toggle" onClick={toggleChat}>
-        <i className="fas fa-comments"></i>
+        <i className={isChatOpen ? "fas fa-times" : "fas fa-comments"}></i>
       </div>
 
       <div

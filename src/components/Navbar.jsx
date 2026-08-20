@@ -36,7 +36,6 @@ const Navbar = ({ theme, toggleTheme }) => {
           {/* Separate Routes (always visible) */}
          {location.pathname !== '/' && (
           <><li><Link to="/" onClick={closeMenu}>Home</Link></li>
-          {/* <li><Link to="/pricing" onClick={closeMenu}>Pricing</Link></li> */}
           <li><Link to="/terms" onClick={closeMenu}>Terms</Link></li>
           <li><Link to="/personal-details" onClick={closeMenu}>Personal Details</Link></li>
           <li><Link to="/privacy-policy" onClick={closeMenu}>Privacy Policy</Link></li>
@@ -46,13 +45,14 @@ const Navbar = ({ theme, toggleTheme }) => {
           id="theme-toggle"
           className="theme-toggle-btn"
           onClick={toggleTheme}
+          aria-label={theme === 'dark' ? "Switch to Light Mode" : "Switch to Dark Mode"}
         >
-          <i className={theme === 'dark' ? 'fas fa-moon' : 'fas fa-sun'}></i>
+          <i className={theme === 'dark' ? 'fas fa-moon' : 'fas fa-sun'} aria-hidden="true"></i>
         </button>
 
-        <div className="menu-btn" id="menu-btn" onClick={toggleMenu}>
-          <i className="fas fa-bars"></i>
-        </div>
+        <button className="menu-btn" id="menu-btn" onClick={toggleMenu} aria-label="Toggle Navigation Menu">
+          <i className="fas fa-bars" aria-hidden="true"></i>
+        </button>
       </div>
     </nav>
   );
