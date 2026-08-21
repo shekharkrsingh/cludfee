@@ -407,6 +407,11 @@ nav.scrolled {
   box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.05);
 }
 
+nav.nav-hidden {
+  transform: translateY(-100%);
+  box-shadow: none;
+}
+
 .nav-container {
   display: flex;
   justify-content: space-between;
@@ -2133,6 +2138,24 @@ footer {
 @media (max-width: 768px) {
   section {
     padding: 80px 0;
+  }
+
+  .container,
+  .personal-container {
+    width: 100%;
+    padding: 0 20px;
+  }
+
+  .testi-arrow {
+    display: none;
+  }
+
+  .testi-slider-wrapper {
+    gap: 0;
+  }
+
+  .testi-slide {
+    padding: 30px 20px;
   }
 
   .nav-links {

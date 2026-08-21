@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import Seo from './Seo';
 import ParticlesBackground from './ParticlesBackground';
-import { Link } from 'react-router-dom';
+
 import '../policy.css';
 
 const Policy = () => {
@@ -76,8 +76,9 @@ const Policy = () => {
                     canonical="https://cludfee.netlify.app/privacy-policy"
                     />
 
-                <h1 className="section-title">Privacy Policy</h1>
+                <h1 className="section-title reveal">Privacy Policy</h1>
                 <p
+                    className="reveal"
                     style={{
                         textAlign: 'center',
                         color: 'var(--text-muted)',
@@ -92,7 +93,7 @@ const Policy = () => {
                 }
             </p>
 
-            <div className="legal-layout">
+            <div className="legal-layout reveal" style={{ transitionDelay: '0.2s' }}>
                 {/* Table of Contents */}
                 <div
                     className='sidebar'

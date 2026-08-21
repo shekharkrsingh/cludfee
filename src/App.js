@@ -20,6 +20,7 @@ import PersonalDetails from './components/PersonalDetails';
 import CustomCursor from './components/CustomCursor';
 import PageNotFound from './components/PageNotFound';
 import Policy from './components/Policy';
+import ScrollToTop from './components/ScrollToTop';
 
 import './App.css';
 import '@fortawesome/fontawesome-free/css/all.min.css';
@@ -52,6 +53,7 @@ function App() {
     return (
         <HeadProvider>
             <Router>
+                <ScrollToTop />
                 <ScrollRevealManager />
                 <div className={`App ${theme}-theme`}>
                     <div className="noise-overlay"></div>

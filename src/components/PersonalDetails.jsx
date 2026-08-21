@@ -1,9 +1,11 @@
 import React from 'react';
 import Seo from "./Seo";
+import ParticlesBackground from './ParticlesBackground';
 
 const PersonalDetails = () => {
   return (
     <div className="personal-container">
+      <ParticlesBackground />
       <Seo
         title="Developer CludFee | Full Stack Developer & AI Solutions Expert" 
         description="Learn more about CludFee, a full stack developer specializing in React, Spring Boot, cloud architecture, and AI-powered applications." 
